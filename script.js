@@ -3,7 +3,7 @@
 -=-=-=-=- plan -=-=-=-=-
     [x] create computer choice
         
-    [ ] create human imput
+    [xot] create human imput
 
     [ ] create scores for each player
 
@@ -19,6 +19,8 @@ console.log(
     "Enter 'scissors' or 3 for scissors"
 );
 
+let userScore = 0;
+let aiScore = 0;
 
 function getAIChoice() {
     const weaponArray = ['rock', 'paper', 'scissors'];
@@ -46,6 +48,5 @@ function getUsersChoice() {
             return 'losted';
     }
 }
-
 
 console.log(getUsersChoice());
