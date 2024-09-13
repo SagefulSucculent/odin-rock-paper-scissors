@@ -3,9 +3,9 @@
 -=-=-=-=- plan -=-=-=-=-
     [x] create computer choice
         
-    [xot] create human imput
+    [x] create human imput
 
-    [ ] create scores for each player
+    [x] create scores for each player
 
     [ ] create a single round
 
@@ -19,14 +19,14 @@ console.log(
     "Enter 'scissors' or 3 for scissors"
 );
 
+const weaponArray = ['undefined', 'rock', 'paper', 'scissors']
+
 let userScore = 0;
 let aiScore = 0;
-
 function getAIChoice() {
-    const weaponArray = ['rock', 'paper', 'scissors'];
     const randomInt = Math.floor(Math.random() * 3) + 1;
 
-    return weaponArray[randomInt];
+    return randomInt;
 }
 
 function getUsersChoice() {
@@ -37,16 +37,36 @@ function getUsersChoice() {
     switch (userResponse) {
         case 'rock':
         case 1:
-            return 'rock';
+            return 1;
         case 'paper':
         case 2:
-            return 'paper';        
+            return 2;        
         case 'scissors':
         case 3:
-            return 'scissors';
+            return 3;
         default:
-            return 'losted';
+            return 0;
     }
 }
 
-console.log(getUsersChoice());
+function playRound() {
+    const aiChoice = getAIChoice();
+    const userChoice = getUsersChoice();
+    console.log('AI choice:', weaponArray[aiChoice] )
+    console.log('User choice:', weaponArray[userChoice] )
+    if(aiChoice === userChoice){
+        console.log('tie');
+    } else if (
+        (aiChoice === 1 && userChoice === 2 ) ||
+        (aiChoice === 2 && userChoice === 3 ) ||
+        (aiChoice === 3 && userChoice === 1 ) 
+    ){
+        console.log('User wins!')
+        userScore++;
+    } else {
+        console.log('AI wins! >:3')
+        aiScore++;
+    }
+}
+
+playRound();
